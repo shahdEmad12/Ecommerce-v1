@@ -1,0 +1,932 @@
+{
+	"info": {
+		"_postman_id": "9f55c9b1-323a-4fda-beb7-106f0ee363ac",
+		"name": "E-commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26661397"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "sign up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n       \"username\":\"shahd\", \r\n        \"email\":\"shahdemad1802@gmail.com\",\r\n        \"password\": \"567788\",\r\n        \"age\": \"21\",\r\n        \"phoneNumbers\":[\r\n            \"01334848559\",\r\n            \"01334775788\"\r\n        ],\r\n        \"addresses\":[\r\n            \"giza\",\r\n            \"cairo\"\r\n        ],\r\n        \"role\": \"superAdmin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"shahdemad1802@gmail.com\",\r\n        \"password\": \"567788\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "add category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA3Njg0MTcxLCJleHAiOjE3MDc3NzA1NzF9.4O5B4HvH_ydxY8RNZZJE5MyQgKNy8elQzVtBXLv1nDQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "category3",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Shahd/OneDrive/Pictures/Screenshots/Screenshot (16).png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/category/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"category",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA3Njk1NzIzLCJleHAiOjE3MDc3ODIxMjN9.V0B_dgw2pZUR8VI3H7tz6XwpZRVq_BPjcP1aJaBKiyU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "category24",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Shahd/OneDrive/Pictures/Screenshots/Screenshot (16).png"
+								},
+								{
+									"key": "oldPublicId",
+									"value": "ecommerce-project/Categories/ggsd/bf0lip6nebcghkofnv2s",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/category/65c96bcb28843392c3b3d507",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"category",
+								"65c96bcb28843392c3b3d507"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA3Njg0MTcxLCJleHAiOjE3MDc3NzA1NzF9.4O5B4HvH_ydxY8RNZZJE5MyQgKNy8elQzVtBXLv1nDQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "categoryy1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Shahd/OneDrive/Pictures/Screenshots/Screenshot (16).png",
+									"disabled": true
+								},
+								{
+									"key": "oldPublicId",
+									"value": "ecommerce-project/Categories/4h5a/pbmsdzasorwhjv6fe8pa",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/category/65c9325955d78f14578238bc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"category",
+								"65c9325955d78f14578238bc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get categories with subcategories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA3Njg0MTcxLCJleHAiOjE3MDc3NzA1NzF9.4O5B4HvH_ydxY8RNZZJE5MyQgKNy8elQzVtBXLv1nDQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/category/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sub categories",
+			"item": [
+				{
+					"name": "add subcategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA3Njg0MTcxLCJleHAiOjE3MDc3NzA1NzF9.4O5B4HvH_ydxY8RNZZJE5MyQgKNy8elQzVtBXLv1nDQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "subcategory 2",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Shahd/OneDrive/Pictures/Screenshots/Screenshot (16).png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/subcategory/65c9336955d78f14578238ca",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"subcategory",
+								"65c9336955d78f14578238ca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update subcategory",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA3Njg0MTcxLCJleHAiOjE3MDc3NzA1NzF9.4O5B4HvH_ydxY8RNZZJE5MyQgKNy8elQzVtBXLv1nDQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "subcategory 2y",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Shahd/OneDrive/Pictures/Screenshots/Screenshot (24).png"
+								},
+								{
+									"key": "oldPublicId",
+									"value": "ecommerce-project/Categories/h23s/SubCategories/3s23/qd5odu4q8nk4t4jy3mkd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/subcategory/65c93503b03c9b893ff82c09",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"subcategory",
+								"65c93503b03c9b893ff82c09"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete subcategory",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA3Njk1NzIzLCJleHAiOjE3MDc3ODIxMjN9.V0B_dgw2pZUR8VI3H7tz6XwpZRVq_BPjcP1aJaBKiyU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/subcategory/65c96ec2effa795aaeb1ef5d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"subcategory",
+								"65c96ec2effa795aaeb1ef5d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get subcategory with brands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/subcategory/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"subcategory",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "brand",
+			"item": [
+				{
+					"name": "add brand",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA3OTQxMDMyLCJleHAiOjE3MDgwMjc0MzJ9.bbYEC1_6Wbj_hjYJmvc4jE6cXqO342w6vcBhN86BEek",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "brand6",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Shahd/OneDrive/Pictures/Screenshots/Screenshot (16).png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/brand/?categoryId=65c4101886d431891142f99a&subCategoryId=65c4103aee1c7bc8d58a21ab",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"brand",
+								""
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "65c4101886d431891142f99a"
+								},
+								{
+									"key": "subCategoryId",
+									"value": "65c4103aee1c7bc8d58a21ab"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update brand",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA3NzY2OTQ3LCJleHAiOjE3MDc4NTMzNDd9.429fNUcSwO7fux033Q54KZ2eytsvP0V3n_7FccbBuDM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "brand 2y",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Shahd/OneDrive/Pictures/Screenshots/Screenshot (16).png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/brand/65ca74d8760fdee81d65ece1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"brand",
+								"65ca74d8760fdee81d65ece1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete brand",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA3OTQxMDMyLCJleHAiOjE3MDgwMjc0MzJ9.bbYEC1_6Wbj_hjYJmvc4jE6cXqO342w6vcBhN86BEek",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/brand/delete/65cd277175be028c17cbbb52",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"brand",
+								"delete",
+								"65cd277175be028c17cbbb52"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all brands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/brand/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"brand",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM0MDE3MWVmZjRlMGFkZWNlNzNlNzUiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA3NjgyOTkyLCJleHAiOjE3MDc3NjkzOTJ9.Ymg6WJaPALm5thqYx5Wpc9q75xGwtnebzbiGG4SrtrI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n       \"username\":\"shahd\", \r\n        //\"email\":\"shahdemad1802r@gmail.com\",\r\n        \"password\": \"567789\",\r\n        //\"age\": \"21\",\r\n        \"phoneNumbers\":[\r\n            \"01334848559\",\r\n            \"01334775788\"\r\n        ],\r\n        \"addresses\":[\r\n            \"giza\",\r\n            \"cairo\"\r\n        ],\r\n        \"role\": \"superAdmin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/user/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM0MDE3MWVmZjRlMGFkZWNlNzNlNzUiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA3NjgyOTkyLCJleHAiOjE3MDc3NjkzOTJ9.Ymg6WJaPALm5thqYx5Wpc9q75xGwtnebzbiGG4SrtrI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA3Njg0MTcxLCJleHAiOjE3MDc3NzA1NzF9.4O5B4HvH_ydxY8RNZZJE5MyQgKNy8elQzVtBXLv1nDQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/user/userprofile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"userprofile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "add product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA4NTQzNTMzLCJleHAiOjE3MDg2Mjk5MzN9.R-3G2tlscq5EpJaWvuFv4DDpecKaoOWbRi1kA77AXm4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "title1r",
+									"type": "text"
+								},
+								{
+									"key": "desc",
+									"value": "desc2",
+									"type": "text"
+								},
+								{
+									"key": "basePrice",
+									"value": "3455",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "specs",
+									"value": "{\"color\":[\"red\"], \"sizes\":[1234]}",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [
+										"/C:/Users/Shahd/OneDrive/Pictures/Screenshots/Screenshot (16).png",
+										"/C:/Users/Shahd/OneDrive/Pictures/Screenshots/Screenshot (24).png"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/product/?categoryId=65c4101886d431891142f99a&subCategoryId=65c4103aee1c7bc8d58a21ab&brandId=65d65b0abefa89afba166070",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"product",
+								""
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "65c4101886d431891142f99a"
+								},
+								{
+									"key": "subCategoryId",
+									"value": "65c4103aee1c7bc8d58a21ab"
+								},
+								{
+									"key": "brandId",
+									"value": "65d65b0abefa89afba166070"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA3OTQxMDMyLCJleHAiOjE3MDgwMjc0MzJ9.bbYEC1_6Wbj_hjYJmvc4jE6cXqO342w6vcBhN86BEek",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "title1r",
+									"type": "text"
+								},
+								{
+									"key": "desc",
+									"value": "desc1",
+									"type": "text"
+								},
+								{
+									"key": "basePrice",
+									"value": "3455",
+									"type": "text"
+								},
+								{
+									"key": "discount",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "specs",
+									"value": "{\"color\":[\"red\"], \"sizes\":[1234]}",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Shahd/OneDrive/Pictures/Screenshots/Screenshot (27).png"
+								},
+								{
+									"key": "oldPublicId",
+									"value": "ecommerce-project/Categories/a42h/SubCategories/g3hs/Brands/d5f1/Products/g5g4/h4gm1mejgcpqtmtco9pw",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/product/65cd21c04058165ef4e44689",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"product",
+								"65cd21c04058165ef4e44689"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA4NTQzNTMzLCJleHAiOjE3MDg2Mjk5MzN9.R-3G2tlscq5EpJaWvuFv4DDpecKaoOWbRi1kA77AXm4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/product/65d651b2d08b9862d386641a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"product",
+								"65d651b2d08b9862d386641a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get ptoduct by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA4NTQzNTMzLCJleHAiOjE3MDg2Mjk5MzN9.R-3G2tlscq5EpJaWvuFv4DDpecKaoOWbRi1kA77AXm4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/product/byid/65cd21c04058165ef4e44689",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"product",
+								"byid",
+								"65cd21c04058165ef4e44689"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA4NTQzNTMzLCJleHAiOjE3MDg2Mjk5MzN9.R-3G2tlscq5EpJaWvuFv4DDpecKaoOWbRi1kA77AXm4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:4000/product/search/?title=title1r",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"product",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "title1r"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWhkZW1hZDE4MDJAZ21haWwuY29tIiwiaWQiOiI2NWM5MzExZjU1ZDc4ZjE0NTc4MjM4YWMiLCJsb2dnZWRJbiI6dHJ1ZSwiaWF0IjoxNzA4NTQzNTMzLCJleHAiOjE3MDg2Mjk5MzN9.R-3G2tlscq5EpJaWvuFv4DDpecKaoOWbRi1kA77AXm4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/product/allproducts?page=1&size=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"product",
+								"allproducts"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "return all products for 2 brands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/product/filter?brand1=65d65b0abefa89afba166070&brand2=65d65b00befa89afba16606a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"product",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "brand1",
+									"value": "65d65b0abefa89afba166070"
+								},
+								{
+									"key": "brand2",
+									"value": "65d65b00befa89afba16606a"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
