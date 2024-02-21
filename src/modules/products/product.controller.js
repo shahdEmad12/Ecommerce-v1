@@ -5,6 +5,8 @@ import Product from '../../../DB/Models/product.model.js'
 import { systemRoles } from '../../utils/system-roles.js'
 import generateUniqueString from '../../utils/generate-Unique-String.js'
 import cloudinaryConnection from '../../utils/cloudinary.js'
+import { paginationFunction } from '../../utils/pagination.js'
+import { APIFeatures } from '../../utils/api-features.js'
 
 //................................. add products .................................
 export const addProduct = async(req,res,next) => {
@@ -121,4 +123,68 @@ export const updateProduct = async (req,res,next) => {
     await product.save()
 
     res.status(200).json({ success: true, message: 'Product updated successfully', data: product })
+}
+
+//................................. delete product.................................
+export const deleteProduct = async (req, res, next) => {
+    // 1- destruct data from params
+    const {productId} = req.params
+    // 2- destruct data from authUser
+    const {_id} = req.authUser
+
+    // 3- check if the product is exists and delete 
+    const product = await Product.findByIdAndDelete(productId).populate('categoryId subCategoryId brandId')
+    if (!product) return next({ cause: 404, message: 'Product not found' })
+
+    // 4- checks who is authorized to delete the product
+    if (
+        req.authUser.role!== systemRoles.SUPER_ADMIN &&
+        product.addedBy.toString()!== _id.toString()
+    ) return next({ cause: 403, message: 'You are not authorized to delete this product' })
+
+    // 5- delete related image folders
+    await cloudinaryConnection().api.delete_resources_by_prefix(`${process.env.MAIN_FOLDER}/Categories/${product.categoryId.folderId}/SubCategories/${product.subCategoryId.folderId}/Brands/${product.brandId.folderId}/Products/${product.folderId}`)
+    await cloudinaryConnection().api.delete_folder(`${process.env.MAIN_FOLDER}/Categories/${product.categoryId.folderId}/SubCategories/${product.subCategoryId.folderId}/Brands/${product.brandId.folderId}/Products/${product.folderId}`)
+
+    res.status(200).json({ success: true, message: 'Product deleted successfully' })
+}
+
+//............................... get products by id ................................
+
+export const getProductById = async (req, res, next) => {
+    const { productId } = req.params
+    const product = await Product.findById(productId)
+    if (!product) return next({ cause: 404, message: 'Product not found' })
+
+    res.status(200).json({ success: true, message: 'Product fetched successfully', data: product })
+}
+
+//................................. search .................................
+export const searchProducts = async (req, res, next) => {
+    const { ...search } = req.query
+    const searches = new APIFeatures(req.query, Product.find())
+        .search(search)
+
+    const products = await searches.mongooseQuery
+    res.status(200).json({ success: true, data: products })
+}
+
+//................................. get all products .................................
+export const getAllProducts = async (req, res, next) => {
+    // 1- destruct data from query
+    const {page, size} = req.query
+    const features = new APIFeatures(req.query, Product.find()).pagination({page, size})
+    // 3- get all products
+    const products = await features.mongooseQuery
+
+    res.status(200).json({ success: true, message: 'Products fetched successfully', data: products })
+}
+
+
+//............................... get two specific brands .............................
+
+export const filterProducts = async (req, res, next) => {
+    const { brand1, brand2 } = req.query
+    const filters = await Product.find({ brand : {$in: [brand1, brand2] }})
+    res.status(200).json({ success: true, data: filters })
 }

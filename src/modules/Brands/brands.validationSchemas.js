@@ -1,26 +1,13 @@
 import joi from 'joi'
+import { generalRules } from '../../utils/general.validation.rule.js'
 
 export const addBrand = {
-    body: joi.object({
-        name: joi.string().required(),
-    }),
     Headers: generalRules.headersRules,
 }
 
-export const updateBrandSchema = {
-    body: joi.object({
-        name: joi.string(),
-        oldPublicId: joi.string(),
-    }),
+export const brandSchema = {
     params: joi.object({
-        brandId: joi.string().required()
-    }),
-    Headers: generalRules.headersRules,
-}
-
-export const deleteBrandSchema = {
-    params: joi.object({
-        brandId: joi.string().required()
+        brandId: generalRules.dbId
     }),
     Headers: generalRules.headersRules,
 }

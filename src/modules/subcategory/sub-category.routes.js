@@ -6,11 +6,14 @@ import {multerMiddleHost} from '../../middlewares/multer.js'
 import * as subCategoryController from './sub-category.controller.js'
 import {auth} from '../../middlewares/auth.middleware.js'
 import {allowedExtensions} from '../../utils/allowed-extensions.js'
+import { validationMiddleware } from "../../middlewares/validation.middleware.js"
+import * as validationSchemas from './sub-category.validationSchemas.js'
 
 const router = Router()
 
 router.post('/:categoryId',
     auth(endPointsRoles.SUB_CREATOR),
+    validationMiddleware(validationSchemas.addSubCategory),
     multerMiddleHost({
         extensions: allowedExtensions.image
     }).single('image'),
@@ -18,6 +21,7 @@ router.post('/:categoryId',
 
 router.put('/:subCategoryId',
     auth(endPointsRoles.SUB_CREATOR),
+    validationMiddleware(validationSchemas.subCategorySchema),
     multerMiddleHost({
         extensions: allowedExtensions.image
     }).single('image'),
@@ -25,6 +29,7 @@ router.put('/:subCategoryId',
 
 router.delete('/:subCategoryId',
     auth(endPointsRoles.SUB_CREATOR),
+    validationMiddleware(validationSchemas.subCategorySchema),
     expressAsyncHandler(subCategoryController.deleteSubCategories))
 
 router.get('/',

@@ -1,30 +1,25 @@
-import Joi from "joi";
-import { Types } from "mongoose";
+import Joi from "joi"
+import { Types } from "mongoose"
 
 
 
 const objectIdValidation = (value, helper) => {
-    const isValid = Types.ObjectId.isValid(value);
-    return (isValid ? value : helper.message('Invalid ObjectId'))
+    const isValid = Types.ObjectId.isValid(value)
+    return (isValid ? value : helper.message('invalid objectId'))
 }
 
-
-
-export const generalValidationRule = {
-    headersRule: Joi.object({
+export const generalRules = {
+    dbId: Joi.string().custom(objectIdValidation),
+    headersRules: Joi.object({
         accesstoken: Joi.string().required(),
-        'user-agent': Joi.string().required(),
-        'postman-token': Joi.string(),
         'content-type': Joi.string(),
+        'content-length': Joi.string(),
+        'user-agent': Joi.string().required(),
+        host: Joi.string().required(),
         'accept-encoding': Joi.string(),
+        'postman-token': Joi.string(),
+        accept: Joi.string(),
+        connection: Joi.string(),
         'cache-control': Joi.string(),
-        'accept': Joi.string(),
-        'host': Joi.string(),
-        'accept-language': Joi.string(),
-        'cookie': Joi.string(),
-        'connection': Joi.string(),
-        'content-length': Joi.string()
-    }),
-    dbId: Joi.string().custom(objectIdValidation)
-
+    })
 }

@@ -103,7 +103,7 @@ req.folder = `${process.env.MAIN_FOLDER}/Categories/${category.folderId}`
 
 export const getAllCategories = async (req,res,next) => {
     // nested populate
-    const categories = await Category.find().populate([{ path: 'subcategories', populate: ([{path: 'Brands'}]) }])
+    const categories = await Category.find().populate([{ path: 'subcategories', populate: ([{path: 'Brands', populate: ([{path: 'Products'}]) }]) }])
     res.status(200).json({ success: true, message: 'Categories fetched successfully', data: categories })
 }
 

@@ -1,4 +1,6 @@
 import joi from 'joi'
+import { systemRoles } from '../../utils/system-roles.js'
+import { generalRules } from '../../utils/general.validation.rule.js'
 
 export const updateUserSchema = {
     body: joi.object({

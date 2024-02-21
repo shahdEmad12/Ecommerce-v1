@@ -1,29 +1,16 @@
 import joi from 'joi'
+import { generalRules } from '../../utils/general.validation.rule.js'
 
 export const addSubCategorySchema = {
-    body: joi.object({
-        name: joi.string().required(),
-    }),
     params: joi.object({
-        categoryId: joi.string().required()
+        categoryId: generalRules.dbId
     }),
     Headers: generalRules.headersRules,
 }
 
-export const updateSubCategorySchema = {
-    body: joi.object({
-        name: joi.string().required(),
-        oldPublicId: joi.string().required()
-    }),
+export const subCategorySchema = {
     params: joi.object({
-        subCategoryId: joi.string().required()
-    }),
-    Headers: generalRules.headersRules,
-}
-
-export const deleteSubCategorySchema = {
-    params: joi.object({
-        subCategoryId: joi.string().required()
+        subCategoryId: generalRules.dbId
     }),
     Headers: generalRules.headersRules,
 }
